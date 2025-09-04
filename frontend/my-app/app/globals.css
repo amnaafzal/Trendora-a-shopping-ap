@@ -11,3 +11,7 @@
     @apply bg-pink-300 px-2 py-1.5 my-1;
     cursor: pointer;
 }
+
+.section{
+    @apply flex flex-wrap justify-center items-center align-middle;
+}

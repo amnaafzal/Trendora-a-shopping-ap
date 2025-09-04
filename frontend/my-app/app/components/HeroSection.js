@@ -28,7 +28,7 @@ const HeroSection = () => {
 
     return (
         <>
-            <section className='my-24 flex flex-wrap justify-center items-center align-middle gap-7'>
+            <section className='my-24 section gap-7'>
 
                 
                     {cards.map((card)=>

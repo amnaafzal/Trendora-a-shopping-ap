@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 const Banner = () => {
   return (
-    <div className='flex justify-center align-middle w-[100%] relative mb-20'>
+    <div className='section w-[100%] relative mb-20'>
     <Image src="/imgaes/banner-1.jpg" alt='banner' width={1000} height={1000} className='w-[100%] md:w-[70%] rounded-2xl'></Image>
     <div className="banner_content absolute top-[20%] sm:top-[30%] left-[17%] w-[70%]">
         <h2 className='text-pink-400'>Summer sale 50% discount</h2>
