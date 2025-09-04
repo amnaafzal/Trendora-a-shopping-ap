@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+
+.product_rating{
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    color: goldenrod;
+}
+
+.product_btn{
+    @apply bg-pink-300 px-2 py-1.5 my-1;
+    cursor: pointer;
+}

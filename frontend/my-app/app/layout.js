@@ -2,6 +2,7 @@ import { Montserrat  } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import "remixicon/fonts/remixicon.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

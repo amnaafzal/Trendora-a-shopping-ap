@@ -10,7 +10,7 @@ const Banner = () => {
         <h2 className='text-pink-400'>Summer sale 50% discount</h2>
         <h1 className='text-2xl sm:text-4xl font-bold'>Women's Fashion</h1>
         <p className='hidden md:block'>Be the first to shop our brand-new styles.</p>
-        <button className='bg-pink-300 px-2 py-1 my-1'><Link href='/shop'>Shop Now</Link></button>
+        <button className='product_btn'><Link href='/shop'>Shop Now</Link></button>
     </div>
     
     </div>

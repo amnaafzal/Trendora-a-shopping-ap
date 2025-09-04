@@ -2,7 +2,7 @@ import React from 'react'
 import Banner from './components/Banner'
 import Categories from './components/Categories'
 import HeroSection from './components/HeroSection'
-import Trending_section from './components/Trending_section'
+import Trending_section from './shop/Trending_section'
 
 const page = () => {
   return (
