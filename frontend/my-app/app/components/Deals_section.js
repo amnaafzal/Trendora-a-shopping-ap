@@ -10,9 +10,9 @@ const Deals_section = () => {
                     <div className='deals_content'>
                         <p className='text-sm text-pink-500'>Get Up To 30% Discount</p>
                         <h1 className='text-xl sm:text-2xl font-bold'>Deal Of The Month</h1>
-                        <p className='hidden md:block'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero autem cum nisi. Veritatis velit perspiciatis ullam, doloremque qui eaque tempora in</p>
+                        <p className='hidden lg:block'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero autem cum nisi. Veritatis velit perspiciatis ullam, doloremque qui eaque tempora in</p>
                     </div>
-                    <div className="deals_countdown flex justify-around gap-3 mt-14 w-[70%]">
+                    <div className="deals_countdown justify-around gap-3 mt-4 lg:mt-10 w-[70%] hidden sm:flex">
                         <div className="countdown_card">
                             <h2>2</h2>
                             <p>Days</p>

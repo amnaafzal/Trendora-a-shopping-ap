@@ -14,11 +14,31 @@
 }
 
 .section {
-    @apply flex flex-wrap justify-center items-center align-middle;
+    @apply flex md:flex-wrap justify-center items-center align-middle mt-24;
 }
 
 .countdown_card {
-    @apply bg-white flex flex-col justify-center items-center w-16 h-16 rounded-full;
-     font-family: 'Chakra Petch', sans-serif;
+    @apply bg-white flex flex-col justify-center items-center rounded-full;
+    font-family: 'Chakra Petch', sans-serif;
     font-weight: 700;
+    font-size: small;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+
+}
+
+.promo_section {
+    width: 50%;
+    @apply flex justify-between items-center flex-wrap
+}
+
+.promo_card {
+    width: 30%;
+   @apply flex justify-center items-center flex-col text-center
+
+}
+.latest_section{
+    width: 70%;
+    @apply bg-gray-100 py-24
 }
