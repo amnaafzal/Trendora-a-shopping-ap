@@ -2,7 +2,8 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='section mb-24'>
+    <>
+    <div className='section mb-20'>
       <footer className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[70%]'>
         <div className="footer_col p-3">
           <h4 className='font-bold text-lg'>Contact Info</h4>
@@ -64,9 +65,12 @@ const Footer = () => {
         </div>
 
 
-
       </footer>
     </div>
+        <div className="footer_bar mb-3.5">
+          Copyrigt @ reserved 2025. All right reserved.
+        </div>
+    </>
   )
 }
 
