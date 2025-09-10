@@ -42,3 +42,11 @@
     @apply bg-gray-100 py-24 flex flex-col justify-center items-center w-[80%] lg:w-[70%]
 }
 
+.footer_col{
+    @apply gap-2.5 flex flex-col
+}
+
+.grid_img{
+    width: 90px;
+    height: 50px;
+}
