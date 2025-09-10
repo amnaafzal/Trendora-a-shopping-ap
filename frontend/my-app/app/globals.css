@@ -30,12 +30,12 @@
 
 .promo_section {
     width: 50%;
-    @apply flex justify-between items-center flex-wrap
+    @apply flex flex-col justify-between items-center md:flex-row gap-8
 }
 
 .promo_card {
-    width: 30%;
-   @apply flex justify-center items-center flex-col text-center
+
+   @apply flex justify-center items-center flex-col text-center md:w-[30%] w-[60%]
 
 }
 .latest_section{
