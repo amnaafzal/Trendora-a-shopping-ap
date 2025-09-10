@@ -14,7 +14,7 @@
 }
 
 .section {
-    @apply flex md:flex-wrap justify-center items-center align-middle mt-24;
+    @apply flex flex-wrap justify-center items-center align-middle mt-24;
 }
 
 .countdown_card {
@@ -39,6 +39,6 @@
 
 }
 .latest_section{
-    width: 70%;
-    @apply bg-gray-100 py-24
+    @apply bg-gray-100 py-24 flex flex-col justify-center items-center w-[80%] lg:w-[70%]
 }
+
