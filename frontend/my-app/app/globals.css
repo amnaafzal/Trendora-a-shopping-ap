@@ -60,3 +60,11 @@
 .footer_bar{
     @apply flex justify-center
 }
+
+.section_header{
+    @apply h-[30%] flex flex-col justify-center items-center text-center w-[70%] bg-orange-100 mb-14
+}
+
+.header_content{
+    @apply w-[50%] py-20
+}

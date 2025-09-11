@@ -13,7 +13,7 @@ const Blogs = () => {
           <p>Elevate your wardrobe with our freshest style tips, trends and inspiration from our blog.</p>
         </div>
 
-        <div className='latest_blogs flex w-[90%] gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='latest_blogs w-[90%] gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
           {
             blogsData.map((blog)=>(
                 <div key={blog.id} className="blogs_card hover:scale-105 duration-300 transition-all cursor-pointer bg-white rounded-xl">
