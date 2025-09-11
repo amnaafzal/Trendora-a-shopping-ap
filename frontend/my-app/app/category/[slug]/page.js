@@ -27,7 +27,7 @@ const Page = ({ params }) => {
             {/* header */}
             <header className='section_header'>
                 <div className="header_content">
-                    <h1 className='capitalize font-bold text-2xl'>{slug}</h1>
+                    <h1 className='capitalize font-bold text-2xl mb-3.5'>{slug}</h1>
                     <p>Browse a diverse range of categories, from chic dresses to versatile accessories. Elevate your stye today.</p>
                 </div>
 
