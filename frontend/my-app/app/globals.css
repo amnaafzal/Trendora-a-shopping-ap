@@ -2,6 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
 
 
+.banner{
+    @apply mt-7;
+}
+
+.section {
+    @apply flex flex-wrap justify-center items-center align-middle;
+}
+
+
 .product_rating {
     margin-bottom: 5px;
     font-size: 0.8rem;
@@ -13,9 +22,6 @@
     cursor: pointer;
 }
 
-.section {
-    @apply flex flex-wrap justify-center items-center align-middle mt-24;
-}
 
 .countdown_card {
     @apply bg-white flex flex-col justify-center items-center rounded-full;
@@ -30,7 +36,7 @@
 
 .promo_section {
     width: 50%;
-    @apply flex flex-col justify-between items-center md:flex-row gap-8
+    @apply flex flex-col justify-between items-center md:flex-row gap-8 w-[80%] md:w-[50%]
 }
 
 .promo_card {
@@ -43,7 +49,7 @@
 }
 
 .footer_col{
-    @apply gap-2.5 flex flex-col
+    @apply gap-3 flex flex-col
 }
 
 .grid_img{

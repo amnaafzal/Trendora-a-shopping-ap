@@ -16,7 +16,7 @@ const Categories = () => {
 
   return (
     <>
-      <div className="section flex-wrap md:flex-nowrap items-center gap-20">
+      <div className="section flex-wrap md:flex-nowrap items-center gap-20 mt-24">
         {categories.map((category) => (
            <Link key={category.id} href={`categories/${category.path}`} className='flex flex-col items-center gap-3'>
               <Image src={category.image} alt='categories images' height={100} width={100} className='w-25 h-25 rounded-full'></Image>

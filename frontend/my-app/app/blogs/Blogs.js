@@ -6,7 +6,7 @@ import blogsData from '@/public/data/blogs.json'
 const Blogs = () => {
     
   return (
-    <div className='section'>
+    <div className='section mt-24'>
       <div className='latest_section rounded-xl'>
         <div className="latest_section_header flex flex-col justify-center items-center align-middle text-center w-[60%] mb-10">
           <h1 className='text-2xl font-bold mb-2.5'>Latest From Blog</h1>

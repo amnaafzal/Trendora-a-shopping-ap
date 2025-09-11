@@ -3,22 +3,22 @@ import React from 'react'
 const Footer = () => {
   return (
     <>
-    <div className='section mb-20'>
+    <div className='section my-20'>
       <footer className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[70%]'>
         <div className="footer_col p-3">
           <h4 className='font-bold text-lg'>Contact Info</h4>
           <p>
-            <span><i className='ri-map-pin-line'></i></span>
+            <span><i className='ri-map-pin-line text-red-600'></i></span>
             123, London Bridge Street, London
           </p>
 
           <p>
-            <span><i className='ri-mail-line'></i></span>
+            <span><i className='ri-mail-line text-red-600'></i></span>
             example@gmail.com
           </p>
 
           <p>
-            <span><i className='ri-phone-line'></i></span>
+            <span><i className='ri-phone-line text-red-600'></i></span>
             (+92) 0111 111 1111
           </p>
 
