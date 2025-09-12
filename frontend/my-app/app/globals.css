@@ -70,8 +70,11 @@
 }
 
 .searchbar{
-    @apply w-full border border-gray-500 outline-none py-1.5 px-2 rounded-md
+    @apply w-full border border-gray-500 outline-none py-1.5 px-2 rounded-md cursor-pointer
 }
 .search_section{
-    @apply w-[50%] flex justify-center items-center gap-3
+    @apply w-[80%] md:w-[50%] flex justify-center items-center gap-3
+}
+.filtered_products{
+    @apply flex justify-center items-center
 }

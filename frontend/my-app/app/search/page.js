@@ -44,9 +44,10 @@ const page = () => {
       </section>
 
 
-      <section className="section">
-        
+      <section className="section w-[100%]">
+        <div className='w-[90%] md:w-[70%] flex justify-center items-center'>
         <Trending_cards products={filteredProduct} />
+        </div>
       </section>
 
 

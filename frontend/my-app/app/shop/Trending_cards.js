@@ -8,7 +8,7 @@ const Trending_cards = ({products}) => {
     
     return (
         // creating cards
-        <section className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-[90%] sm:w-[70%] my-12'>
+        <section className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-[90%]  my-12'>
             
       {
           products.map((product)=>(
