@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
+
+
+.banner{
+    @apply mt-7;
+}
+
+.section {
+    @apply flex flex-wrap justify-center items-center align-middle;
+}
+
+
+.product_rating {
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+    color: goldenrod;
+}
+
+.product_btn {
+    @apply bg-pink-300 px-2 py-1.5 my-1;
+    cursor: pointer;
+}
+
+
+.countdown_card {
+    @apply bg-white flex flex-col justify-center items-center rounded-full;
+    font-family: 'Chakra Petch', sans-serif;
+    font-weight: 700;
+    font-size: small;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+
+}
+
+.promo_section {
+    width: 50%;
+    @apply flex flex-col justify-between items-center md:flex-row gap-8 w-[80%] md:w-[50%]
+}
+
+.promo_card {
+
+   @apply flex justify-center items-center flex-col text-center md:w-[30%] w-[60%]
+
+}
+.latest_section{
+    @apply bg-gray-100 py-24 flex flex-col justify-center items-center w-[80%] lg:w-[70%]
+}
+
+.footer_col{
+    @apply gap-3 flex flex-col
+}
+
+.grid_img{
+    width: 90px;
+    height: 50px;
+}
+
+.footer_bar{
+    @apply flex justify-center
+}
+
+.section_header{
+    @apply h-[30%] flex flex-col justify-center items-center text-center w-[70%] bg-orange-100 mb-14
+}
+
+.header_content{
+    @apply w-[50%] py-20
+}
+
+.searchbar{
+    @apply w-full border border-gray-500 outline-none py-1.5 px-2 rounded-md cursor-pointer
+}
+.search_section{
+    @apply w-[80%] md:w-[50%] flex justify-center items-center gap-3
+}
+.filtered_products{
+    @apply flex justify-center items-center
+}
+
+
+.product_section{
+    @apply w-[100%] flex flex-col justify-center items-center md:justify-start
+}
+.filter_option{
+    @apply flex flex-row md:flex-col gap-5 md:gap-1 flex-wrap
+}
