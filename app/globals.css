@@ -86,3 +86,12 @@
 .filter_option{
     @apply flex flex-row md:flex-col gap-5 md:gap-1 flex-wrap
 }
+
+.product_img{
+    @apply md:flex-1/2 flex-1
+}
+
+.product_info{
+    @apply md:flex-1/2 flex-1 space-y-3
+
+}
