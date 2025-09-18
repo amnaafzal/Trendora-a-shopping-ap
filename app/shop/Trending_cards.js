@@ -2,8 +2,17 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Star_rating from '../components/Star_rating'
+import { useDispatch } from 'react-redux'
+import { AddTOCart } from '../features/cart/CartSlice'
 
 const Trending_cards = ({products}) => {
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (product) =>{
+    dispatch(AddTOCart(product))
+    
+  }
   
     
     return (
@@ -23,7 +32,12 @@ const Trending_cards = ({products}) => {
                 </div>
             </Link>
 
-            <button className='absolute top-[3%] right-[3%] p-1 cursor-pointer z-20 hover:bg-red-600 bg-red-500'><Image src='/imgaes/shopping-cart.png' width={25} height={25} alt='add to cart'></Image></button>
+            <button 
+            onClick={(e)=>{
+              e.stopPropagation()
+              handleAddToCart(product)
+            }} 
+            className='absolute top-[3%] right-[3%] p-1 cursor-pointer z-20 hover:bg-red-600 bg-red-500'><Image src='/imgaes/shopping-cart.png' width={25} height={25} alt='add to cart'></Image></button>
             </div>
           ))
       }

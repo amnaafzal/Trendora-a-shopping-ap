@@ -3,13 +3,23 @@
 import React, { use, useEffect } from 'react'
 import productsData from '@/public/data/products.json'
 import Star_rating from '@/app/components/Star_rating'
+import { useDispatch } from 'react-redux'
+import { AddTOCart } from '@/app/features/cart/CartSlice'
+
 
 const page = ({ params }) => {
 
 
     const { id } = use(params)
     const filter = productsData.find(product => product.id === Number(id))
-   
+
+
+    const dispatch = useDispatch()
+
+    const handleAddToCart = (filter) => {
+        dispatch(AddTOCart(filter))
+    }
+
 
     return (
         <>
@@ -24,6 +34,7 @@ const page = ({ params }) => {
                 </section>
             </div>
 
+            {/* product section */}
 
             <section className="section mt-10">
 
@@ -41,12 +52,22 @@ const page = ({ params }) => {
                         <p className='text-gray-600'>{filter.description}</p>
                         <p className='capitalize'><span className='font-bold text-md mr-1.5'>Category: </span>{filter.category}</p>
                         <p className='capitalize'><span className='font-bold text-md mr-1.5'>Color: </span>{filter.color}</p>
-                        
-                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating = {filter.rating} /></span></div>
-                        <button className='bg-red-700 text-white px-4 py-1'>Add To Cart</button>
+
+                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating={filter.rating} /></span></div>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                handleAddToCart(filter)
+                            }}
+                            className='bg-red-700 text-white px-4 py-1 cursor-pointer'>Add To Cart</button>
                     </div>
                 </div>
             </section>
+
+            {/* review section */}
+            {/* review section will be designed when have a backend  */}
+
+
         </>
     )
 }
