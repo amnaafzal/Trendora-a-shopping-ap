@@ -14,13 +14,13 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
 
-        AddTOCart : (state, action) =>{
+        AddTOCart: (state, action) => {
 
-            const isExist = state.products.find(product=> product.id == action.payload.id)
+            const isExist = state.products.find(product => product.id == action.payload.id)
 
-            if(!isExist){
-                state.products.push({...action.payload, quantity : 1})
-            }else{
+            if (!isExist) {
+                state.products.push({ ...action.payload, quantity: 1 })
+            } else {
                 console.log("product already exist")
             }
 
@@ -28,30 +28,55 @@ export const cartSlice = createSlice({
             state.totalPrice = setTotalPrice(state)
             state.tax = setTax(state)
             state.grandTotal = setGrandotal(state)
-        } 
+        },
+
+        clearCart: (state) => {
+
+            state.products = [],
+            state.selecteditems = 0,
+            state.totalPrice = 0,
+            state.tax = 0,
+            state.taxRate = 0.05,
+            state.grandTotal = 0
+
+
+        },
+
+        popItem: (state, action) =>{
+            state.products = state.products.filter((item)=>(
+                item.id != action.payload.id
+            ))
+
+            state.setSelectedproducts = setSelectedproducts(state)
+            state.totalPrice = setTotalPrice(state)
+            state.tax = setTax(state)
+            state.grandTotal = setGrandotal(state)
+        }
+
 
     },
 })
 
 
 
+
 // utility functions
 
 const setSelectedproducts = (state) => {
-    state.products.reduce((total, product) =>{
-        return Number(total+product.quantity)
-    } )
+    return state.products.reduce((total, product) => {
+        return total + product.quantity
+    }, 0)
 }
 const setTotalPrice = (state) => {
- state.products.reduce((total, product) =>{
-        return Number(total+product.price*product.quantity)
-    } )
+    return state.products.reduce((total, product) => {
+        return total + product.price * product.quantity
+    }, 0)
 }
-const setTax = (state) => setTotalPrice(state)* state.taxRate
-const setGrandotal = (state) => setTax(state) + setTotalPrice
+const setTax = (state) => setTotalPrice(state) * state.taxRate
+const setGrandotal = (state) => setTax(state) + setTotalPrice(state)
 
 
 
-export const { AddTOCart } = cartSlice.actions
+export const { AddTOCart, clearCart, popItem } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -1,9 +1,10 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
+import CartModal from './CartModal'
 
 
 const Navbar = () => {
@@ -17,7 +18,18 @@ const Navbar = () => {
   }
 
 
+  const [isCartOpen, setIsCartOpen] = useState(false)
+
+  const clickCart = ()=>{
+    setIsCartOpen(!isCartOpen)
+  }
+
+  const handleCartToggle = () =>{
+     setIsCartOpen(!isCartOpen)
+  }
+
   return (
+    <>
 
     <header className='flex  h-20 items-center justify-center align-middle '>
 
@@ -38,7 +50,7 @@ const Navbar = () => {
           <span>
             <Link href='/search'><Image src="/imgaes/magnifying-glass.png" alt='search' width={24} height={24}></Image></Link>
           </span>
-          <span className='relative p-2.5 cursor-pointer'>
+          <span onClick={clickCart} className='relative p-2.5 cursor-pointer'>
             <Image src="/imgaes/shopping-cart.png" alt='cart' width={24} height={24} className='m-0.5'></Image>
             <span className='absolute text-xs bg-red-600 rounded-2xl top-0 right-0 px-1'>{cartValue}</span>
           </span>
@@ -51,6 +63,8 @@ const Navbar = () => {
       </nav>
     </header>
 
+    {isCartOpen && <CartModal products ={products} cartOpen={isCartOpen} onClose={handleCartToggle}/>}
+</>
   )
 }
 

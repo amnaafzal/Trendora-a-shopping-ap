@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Star_rating from '../components/Star_rating'
 import { useDispatch } from 'react-redux'
-import { AddTOCart } from '../features/cart/CartSlice'
+import { AddTOCart, clearCart, popItem } from '../features/cart/CartSlice'
 
 const Trending_cards = ({products}) => {
 
