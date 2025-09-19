@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductsSummary from './ProductsSummary'
-import { popItem } from '../features/cart/CartSlice'
+import { popItem, incrementQuantity, deccrementQuantity } from '../features/cart/CartSlice'
 import { useDispatch } from 'react-redux'
 
 
@@ -10,12 +10,12 @@ const CartModal = ({ products, cartOpen, onClose }) => {
 
     const dispatch = useDispatch()
 
-    const DecementQuantity = () =>{
-        console.log("decremented")
+    const DecementItemQuantity = (item) =>{
+        dispatch(deccrementQuantity(item))
     }
-
-    const incrementQuantity = () =>{
-        console.log("incremented")
+    
+    const incrementItemQuantity = (item) =>{
+        dispatch(incrementQuantity(item))
     }
 
     const removeItem = (item) =>{
@@ -64,9 +64,9 @@ const CartModal = ({ products, cartOpen, onClose }) => {
 
                                     {/* change item quantity */}
                                     <div className='flex flex-row md:justify-start justify-end items-center'>
-                                        <span className='bg-gray-400 hover:bg-red-600 text-black hover:text-white cursor-pointer size-6 flex justify-center items-center px-1 rounded-full mr-2' onClick={DecementQuantity}>-</span>
+                                        <span className='bg-gray-400 hover:bg-red-600 text-black hover:text-white cursor-pointer size-6 flex justify-center items-center px-1 rounded-full mr-2' onClick={()=>DecementItemQuantity(item)}>-</span>
                                         <span>{item.quantity}</span>
-                                        <span className='bg-gray-400 hover:bg-red-600 text-black hover:text-white  cursor-pointer size-6 flex justify-center items-center px-1 rounded-full ml-2' onClick={incrementQuantity}>+</span>
+                                        <span className='bg-gray-400 hover:bg-red-600 text-black hover:text-white  cursor-pointer size-6 flex justify-center items-center px-1 rounded-full ml-2' onClick={()=>incrementItemQuantity(item)}>+</span>
                                     </div>
 
                                     {/* remove item */}

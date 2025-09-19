@@ -33,19 +33,44 @@ export const cartSlice = createSlice({
         clearCart: (state) => {
 
             state.products = [],
-            state.selecteditems = 0,
-            state.totalPrice = 0,
-            state.tax = 0,
-            state.taxRate = 0.05,
-            state.grandTotal = 0
+                state.selecteditems = 0,
+                state.totalPrice = 0,
+                state.tax = 0,
+                state.taxRate = 0.05,
+                state.grandTotal = 0
 
 
         },
 
-        popItem: (state, action) =>{
-            state.products = state.products.filter((item)=>(
+        popItem: (state, action) => {
+            state.products = state.products.filter((item) => (
                 item.id != action.payload.id
             ))
+
+            state.setSelectedproducts = setSelectedproducts(state)
+            state.totalPrice = setTotalPrice(state)
+            state.tax = setTax(state)
+            state.grandTotal = setGrandotal(state)
+        },
+
+        incrementQuantity: (state, action) => {
+            const match = state.products.find(item => (
+                item.id === action.payload.id
+            ))
+
+            match.quantity += 1;
+
+            state.setSelectedproducts = setSelectedproducts(state)
+            state.totalPrice = setTotalPrice(state)
+            state.tax = setTax(state)
+            state.grandTotal = setGrandotal(state)
+        },
+        deccrementQuantity: (state, action) => {
+            const match = state.products.find(item => (
+                item.id === action.payload.id
+            ))
+
+            match.quantity -= 1;
 
             state.setSelectedproducts = setSelectedproducts(state)
             state.totalPrice = setTotalPrice(state)
@@ -77,6 +102,6 @@ const setGrandotal = (state) => setTax(state) + setTotalPrice(state)
 
 
 
-export const { AddTOCart, clearCart, popItem } = cartSlice.actions
+export const { AddTOCart, clearCart, popItem, incrementQuantity, deccrementQuantity } = cartSlice.actions
 
 export default cartSlice.reducer
