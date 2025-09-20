@@ -70,7 +70,8 @@ export const cartSlice = createSlice({
                 item.id === action.payload.id
             ))
 
-            match.quantity -= 1;
+            if (match.quantity > 0)
+                match.quantity -= 1;
 
             state.setSelectedproducts = setSelectedproducts(state)
             state.totalPrice = setTotalPrice(state)

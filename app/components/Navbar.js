@@ -10,6 +10,11 @@ import CartModal from './CartModal'
 const Navbar = () => {
 
 
+
+  const goToLogin = () =>{
+
+  }
+
   const products = useSelector((state) => state.cart.products)
   let cartValue = 0
 
@@ -54,9 +59,9 @@ const Navbar = () => {
             <Image src="/imgaes/shopping-cart.png" alt='cart' width={24} height={24} className='m-0.5'></Image>
             <span className='absolute text-xs bg-red-600 rounded-2xl top-0 right-0 px-1'>{cartValue}</span>
           </span>
-          <span className='cursor-pointer'>
+          <Link href={'/login'} className='cursor-pointer'>
             <Image src="/imgaes/contact.png" alt='profile' width={24} height={24}></Image>
-          </span>
+          </Link>
 
 
         </div>

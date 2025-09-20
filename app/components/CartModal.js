@@ -30,7 +30,7 @@ const CartModal = ({ products, cartOpen, onClose }) => {
         <div className={`fixed z-[1000] inset-0 bg-black/80  transition-colors  ${cartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             style={{ transition: 'background-color 300ms' }}>
 
-            <div className={`fixed top-0 right-0 md:w-1/3 w-full bg-white backdrop-opacity-0 h-full overflow-y-auto transition-transform ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            <div className={`fixed top-0 right-0 md:w-1/2 lg:w-1/3 w-full bg-white backdrop-opacity-0 h-full overflow-y-auto transition-transform ${cartOpen ? 'translate-x-0' : 'translate-x-full'}`}
                 style={{ transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45 0.96)' }}
             >
                 <div className='px-3 mt-5'>
