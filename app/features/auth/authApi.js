@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const authApi = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: `http://localhost:5000/api/auth/users`,
+        baseUrl: `http://localhost:5000/api/auth`,
         credentials: 'include'
     }),
 
@@ -14,7 +14,7 @@ const authApi = createApi({
                 body: newUser
             })
         }),
-        loginUSer : builder.mutation({
+        loginUser : builder.mutation({
             query : (credentials) =>({
                 url: '/login',
                 method: 'POST',
@@ -29,5 +29,5 @@ const authApi = createApi({
 })
 
 
-export const {useLoginUSerMutation, useRegisterUserMutation} = authApi;
+export const {useLoginUserMutation, useRegisterUserMutation} = authApi;
 export default authApi; 

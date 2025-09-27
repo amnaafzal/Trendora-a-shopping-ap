@@ -2,14 +2,20 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRegisterUserMutation } from '../features/auth/authApi';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/navigation';
 
 
 const page = () => {
 
-    const [message, setMessage] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [username, setUsername] = useState('')
+    const [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const [registerUser, {isLoading: registerloading}] = useRegisterUserMutation();
 
     const handleRegister = async (e) => {
         e.preventDefault()
@@ -20,6 +26,16 @@ const page = () => {
         }
 
         console.log(data)
+
+        try {
+            const response = await registerUser(data).unwrap();
+            alert(`Registered successfully!`)
+            router.push('/login')
+        } catch (error) {
+            setMessage("invalid information")
+        }
+        
+
     }
 
 

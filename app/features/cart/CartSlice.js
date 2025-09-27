@@ -106,3 +106,4 @@ const setGrandotal = (state) => setTax(state) + setTotalPrice(state)
 export const { AddTOCart, clearCart, popItem, incrementQuantity, deccrementQuantity } = cartSlice.actions
 
 export default cartSlice.reducer
+ 
