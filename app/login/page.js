@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLoginUserMutation } from '../features/auth/authApi';
 import { useDispatch } from 'react-redux';
 import { useRouter } from "next/navigation";
+import { setUser } from '../features/auth/authSlice';
 
 
 
@@ -29,7 +30,9 @@ const page = () => {
     }
 
     try {
-      const response = await loginUser(data).unwrap()
+      const response = await loginUser(data).unwrap();
+      const {user, token} = response;
+      dispatch(setUser({user}))
       alert("Login successfully!");
       router.push("/");
     } catch (error) {

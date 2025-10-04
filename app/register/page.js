@@ -25,10 +25,11 @@ const page = () => {
             password,
         }
 
-        console.log(data)
+    
 
         try {
             const response = await registerUser(data).unwrap();
+            console.log(response)
             alert(`Registered successfully!`)
             router.push('/login')
         } catch (error) {
