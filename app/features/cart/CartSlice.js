@@ -16,7 +16,7 @@ export const cartSlice = createSlice({
 
         AddTOCart: (state, action) => {
 
-            const isExist = state.products.find(product => product.id == action.payload.id)
+            const isExist = state.products.find(product => product._id == action.payload._id)
 
             if (!isExist) {
                 state.products.push({ ...action.payload, quantity: 1 })
@@ -44,7 +44,7 @@ export const cartSlice = createSlice({
 
         popItem: (state, action) => {
             state.products = state.products.filter((item) => (
-                item.id != action.payload.id
+                item._id != action.payload._id
             ))
 
             state.setSelectedproducts = setSelectedproducts(state)
@@ -55,7 +55,7 @@ export const cartSlice = createSlice({
 
         incrementQuantity: (state, action) => {
             const match = state.products.find(item => (
-                item.id === action.payload.id
+                item._id === action.payload._id
             ))
 
             match.quantity += 1;
@@ -67,7 +67,7 @@ export const cartSlice = createSlice({
         },
         deccrementQuantity: (state, action) => {
             const match = state.products.find(item => (
-                item.id === action.payload.id
+                item._id === action.payload._id
             ))
 
             if (match.quantity > 0)
