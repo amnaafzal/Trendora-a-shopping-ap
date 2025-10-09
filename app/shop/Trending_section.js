@@ -1,19 +1,31 @@
 "use client"
 
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Trending_cards from './Trending_cards'
-import products from "../../public/data/products"
+import { useGetAllProductsQuery } from '../features/products/productApi';
 
 
 const Trending_section = () => {
 
-    const [visibleProducts, setVisibleProducts] = useState(8)
-    console.log(products.length)
+  const [visibleProducts, setVisibleProducts] = useState(8)
 
-    const showMoreProducts =()=>{
-        setVisibleProducts(prevProducts => prevProducts +4)
-    }
-   
+  const showMoreProducts = () => {
+    setVisibleProducts(prevProducts => prevProducts + 4)
+  }
+
+  const { data = {}, error, isLoading } = useGetAllProductsQuery({
+    category: "all",
+    color: "all",
+    minPrice: "",
+    maxPrice: "",
+    page:"",
+    limit: ""
+  });
+  const { products = [], count, totalPages } = data || {};
+  if (isLoading) return <div>Loading .....</div>
+  if (error) return <div>error: {error.message}</div>
+
+
 
   return (
     <div className="flex flex-col justify-center items-center mb-12 text-center w-[100%] ">
@@ -21,15 +33,15 @@ const Trending_section = () => {
       <p className='text-gray-600'>Discover the season's hottest picks that fashion enthusiasts are adding to their carts daily</p>
       <p className='text-gray-600'>handpicked styles that are flying off our shelves</p>
 
-    {/* trending cards */}
+      {/* trending cards */}
       <div className='w-[90%] md:w-[70%]'>
-      <Trending_cards products= {products.slice( 0 , visibleProducts )} />
+        <Trending_cards products={products.slice(0, visibleProducts)} />
       </div>
       <div className='showproducts_btn mt-7'>{
         visibleProducts < products.length && (
-        <button className='product_btn bg-red-500 hover:bg-red-600' onClick={showMoreProducts}>Show More</button> 
+          <button className='product_btn bg-red-500 hover:bg-red-600' onClick={showMoreProducts}>Show More</button>
         )
-        }
+      }
       </div>
     </div>
   )
