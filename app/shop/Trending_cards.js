@@ -21,8 +21,8 @@ const Trending_cards = ({products}) => {
             
       {
           products.map((product)=>(
-            <div key={product.id} className='relative'>
-            <Link href={`shop/${product.id}`} className="card flex flex-col justify-center items-center">
+            <div key={product._id} className='relative'>
+            <Link href={`shop/${product._id}`} className="card flex flex-col justify-center items-center">
                 <img src={product.image} className='max-h-96 md:h-64 w-full object-cover hover:scale-105 transition-all duration-300'></img>
                  {/* product description */}
                 <div className="product_info flex flex-col items-center mt-4">
