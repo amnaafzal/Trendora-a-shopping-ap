@@ -1,20 +1,31 @@
 'use client'
 
 import React, { use, useEffect } from 'react'
-import productsData from '@/public/data/products.json'
+// import productsData from '@/public/data/products.json'
 import Star_rating from '@/app/components/Star_rating'
 import { useDispatch } from 'react-redux'
 import { AddTOCart } from '@/app/features/cart/CartSlice'
+import { useGetSingleProductQuery } from '@/app/features/products/productApi'
 
 
 const page = ({ params }) => {
-
-
+    
+    
     const { id } = use(params)
-    const filter = productsData.find(product => product.id === Number(id))
-
-
     const dispatch = useDispatch()
+    // const filter = productsData.find(product => product._id === Number(id))
+
+    const {data, isLoading, error} = useGetSingleProductQuery(id);
+    if(isLoading){
+        return <div>loading.....</div>
+    }
+
+    if(error){
+        return <div>error {error.message}</div>
+    }
+
+    const {product} = data;
+
 
     const handleAddToCart = (filter) => {
         dispatch(AddTOCart(filter))
@@ -41,23 +52,23 @@ const page = ({ params }) => {
                 <div className='w-[70%] flex flex-col md:flex-row gap-10'>
                     {/* product image */}
                     <div className="product_img">
-                        <img src={filter.image} alt={filter.name} />
+                        <img src={product.image} alt={product.name} />
                     </div>
 
                     {/* product info */}
 
                     <div className="product_info">
-                        <h1 className='text-2xl font-medium'>{filter.name}</h1>
-                        <p className='text-red-700 text-lg'>${filter.price} <span className='line-through text-sm text-gray-500'>{filter.oldPrice}</span></p>
-                        <p className='text-gray-600'>{filter.description}</p>
-                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Category: </span>{filter.category}</p>
-                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Color: </span>{filter.color}</p>
+                        <h1 className='text-2xl font-medium'>{product.name}</h1>
+                        <p className='text-red-700 text-lg'>${product.price} <span className='line-through text-sm text-gray-500'>{product.oldPrice}</span></p>
+                        <p className='text-gray-600'>{product.description}</p>
+                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Category: </span>{product.category}</p>
+                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Color: </span>{product.color}</p>
 
-                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating={filter.rating} /></span></div>
+                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating={product.rating} /></span></div>
                         <button
                             onClick={(e) => {
                                 e.stopPropagation()
-                                handleAddToCart(filter)
+                                handleAddToCart(product)
                             }}
                             className='bg-red-700 text-white px-4 py-1 cursor-pointer'>Add To Cart</button>
                     </div>
