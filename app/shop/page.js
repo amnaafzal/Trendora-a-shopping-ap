@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Trending_cards from './Trending_cards'
 import productsData from '@/public/data/products.json'
 import Shop_filters from './Shop_filters'
+import { useGetAllProductsQuery } from '../features/products/productApi'
 
 const Page = () => {
 
@@ -18,57 +19,32 @@ const Page = () => {
 
     ]
   }
-  const [products, setProducts] = useState(productsData)
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8)
   const [filterState, setFilterState] = useState({
     category: "all",
     color: "all",
     priceRange: null
   })
+  const { category, color, priceRange } = filterState;
+
+  const minPrice = priceRange ? priceRange.min : "";
+  const maxPrice = priceRange ? priceRange.max : "";
 
 
-  // filtering products
+  const { data = {}, error, isLoading } = useGetAllProductsQuery({
+    category: category !== "all" ? category : "",
+    color: color !== "all" ? color : "",
+    minPrice: minPrice,
+    maxPrice: maxPrice,
+    page: currentPage,
+    limit: productsPerPage
+  })
 
-  const applyFilter = () => {
-
-    let filteredProducts = productsData;
-
-    // filtering by color
-
-    if (filterState.color && filterState.color !== "all") {
-      filteredProducts = filteredProducts.filter(product => product.color === filterState.color)
-    }
-
-    // filtering by category
-
-    if (filterState.category && filterState.category !== "all") {
-      filteredProducts = filteredProducts.filter(product => product.category === filterState.category)
-    }
+  const { products = [], count, totalPages } = data || {};
 
 
-    // filtering by price range 
-
-    if (filterState.priceRange) {
-      const { min, max } = filterState.priceRange
-      filteredProducts = filteredProducts.filter(product => {
-        const price = Number(product.price)
-        return (
-          price >= Number(min) &&
-          (max === "infinity" ? true : price <= Number(max))
-        )
-
-      }
-      )
-    }
-
-    setProducts(filteredProducts)
-
-  }
-
-
-  useEffect(() => {
-    applyFilter()
-
-  }, [filterState])
 
 
   const clearFilter = () => {
@@ -79,6 +55,8 @@ const Page = () => {
     })
   }
 
+  if (isLoading) return <div>Loading .....</div>
+  if (error) return <div>error: {error.message}</div>
 
 
   return (
@@ -98,13 +76,13 @@ const Page = () => {
 
         <div className='flex flex-col md:flex-row mb-14 justify-center  md:px-0 gap-12 w-[90%] md:w-[70%]'>
           <div className="filter_section">
-            <Shop_filters filters={filters} filterState = {filterState} setFilterState ={setFilterState} clearFilter={clearFilter} />
+            <Shop_filters filters={filters} filterState={filterState} setFilterState={setFilterState} clearFilter={clearFilter} />
           </div>
           {/* right side (products) */}
 
-          <div className="product_section"> 
+          <div className="product_section">
             <h1 className='font-medium text-xl'>{`${products.length} available from ${productsData.length}`}</h1>
-          <Trending_cards products={products} />
+            <Trending_cards products={products} />
           </div>
         </div>
       </div>
