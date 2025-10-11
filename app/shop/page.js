@@ -44,7 +44,7 @@ const Page = () => {
   })
 
   const { products = [], count, totalPages } = data || {};
-
+  
 
 
 
@@ -60,6 +60,19 @@ const Page = () => {
   if (error) return <div>error occured: {error.message}</div>
 
 
+  // PAGINATION
+
+  const startPage = (currentPage - 1) * productsPerPage + 1;
+  const endPage = startPage + productsPerPage - 1;
+
+
+  const handlePrevious = () =>{
+    setCurrentPage(prev => (prev == 1 ? prev : prev - 1 ));
+  }
+
+  const handleNext = () =>{
+    setCurrentPage(prev => (prev == totalPages ? prev : prev + 1 ));
+  }
 
 
   return (
@@ -84,11 +97,37 @@ const Page = () => {
           {/* right side (products) */}
 
           <div className="product_section">
-            <h1 className='font-medium text-xl'>{`${products.length} available from ${productsData.length}`}</h1>
+            <h1 className='font-medium text-xl'>{`From ${startPage} to ${endPage} products available on page ${currentPage}`}</h1>
             <Trending_cards products={products} />
           </div>
+
         </div>
+
       </div>
+          {/* PAGINATION */}
+
+          <div className='flex flex-row justify-center items-center'>
+            <button 
+            disabled = {currentPage == 0}
+            onClick={handlePrevious}
+            className='bg-gray-200 px-3 py-1 cursor-pointer rounded-md font-black hover:bg-blue-600 hover:text-white mr-1 disabled:hover:bg-blue-300 disabled:cursor-not-allowed'>Previous</button>
+
+            {
+              [...Array(totalPages)].map((_, index)=>(
+                <button 
+                 onClick={()=>{setCurrentPage(index+1)}}
+                className = {`py-1 mx-2 rounded-md cursor-pointer ${currentPage === index + 1 ? 'bg-blue-600 text-white px-4':'bg-gray-200 px-3 text-gray-700'}`}
+                key={index}
+                >{index + 1}</button>
+              ))
+            }
+
+            <button 
+            disabled = {currentPage == totalPages}
+            onClick={handleNext}
+            className='bg-gray-200 px-3 py-1 rounded-md font-black hover:bg-blue-600 hover:text-white ml-1 cursor-pointer'>
+              Next</button>
+          </div>
 
 
     </>
