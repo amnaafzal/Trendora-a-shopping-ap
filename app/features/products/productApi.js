@@ -11,12 +11,12 @@ const productApi = createApi({
 
         // GET ALL PRODUCTS
         getAllProducts: builder.query({
-            query: ({ category, color, minPrice, maxPrice, page = 1, limit = 10 }) => {
+            query: ({ category, color, minprice, maxprice, page = 1, limit = 10 }) => {
                 const queryParams = new URLSearchParams({
                     category: category || "",
                     color: color || "",
-                    minPrice: minPrice || 0,
-                    maxPrice: maxPrice || "",
+                    minprice: minprice || 0,
+                    maxprice: maxprice || "",
                     page: page.toString(),
                     limit: limit.toString()
                 }).toString();

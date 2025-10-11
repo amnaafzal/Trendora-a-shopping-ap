@@ -15,11 +15,11 @@ const Page = () => {
       { label: "under $50", min: "0", max: "50" },
       { label: "$50-$100", min: "50", max: "100" },
       { label: "$100-$200", min: "100", max: "200" },
-      { label: "$200-above", min: "200", max: "infinity" }
+      { label: "$200-above", min: "200", max: Number.MAX_VALUE }
 
     ]
   }
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8)
   const [filterState, setFilterState] = useState({
@@ -29,15 +29,16 @@ const Page = () => {
   })
   const { category, color, priceRange } = filterState;
 
-  const minPrice = priceRange ? priceRange.min : "";
-  const maxPrice = priceRange ? priceRange.max : "";
+  const minPrice = priceRange && typeof priceRange === "object" ? priceRange.min : "";
+  const maxPrice = priceRange && typeof priceRange === "object" ? priceRange.max : "";
+
 
 
   const { data = {}, error, isLoading } = useGetAllProductsQuery({
     category: category !== "all" ? category : "",
     color: color !== "all" ? color : "",
-    minPrice: minPrice,
-    maxPrice: maxPrice,
+    minprice: minPrice,
+    maxprice: maxPrice,
     page: currentPage,
     limit: productsPerPage
   })
@@ -56,7 +57,9 @@ const Page = () => {
   }
 
   if (isLoading) return <div>Loading .....</div>
-  if (error) return <div>error: {error.message}</div>
+  if (error) return <div>error occured: {error.message}</div>
+
+
 
 
   return (
