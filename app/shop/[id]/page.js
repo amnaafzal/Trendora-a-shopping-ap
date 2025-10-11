@@ -25,6 +25,7 @@ const page = ({ params }) => {
     }
 
     const {product} = data;
+    console.log(data.review);
 
 
     const handleAddToCart = (filter) => {
@@ -58,13 +59,13 @@ const page = ({ params }) => {
                     {/* product info */}
 
                     <div className="product_info">
-                        <h1 className='text-2xl font-medium'>{product.name}</h1>
-                        <p className='text-red-700 text-lg'>${product.price} <span className='line-through text-sm text-gray-500'>{product.oldPrice}</span></p>
-                        <p className='text-gray-600'>{product.description}</p>
-                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Category: </span>{product.category}</p>
-                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Color: </span>{product.color}</p>
+                        <h1 className='text-2xl font-medium'>{product?.name}</h1>
+                        <p className='text-red-700 text-lg'>${product?.price} <span className='line-through text-sm text-gray-500'>{product?.oldPrice}</span></p>
+                        <p className='text-gray-600'>{product?.description}</p>
+                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Category: </span>{product?.category}</p>
+                        <p className='capitalize'><span className='font-bold text-md mr-1.5'>Color: </span>{product?.color}</p>
 
-                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating={product.rating} /></span></div>
+                        <div className='font-bold text-md flex gap-3 align-middle'>Rating: <span>< Star_rating rating={product?.rating} /></span></div>
                         <button
                             onClick={(e) => {
                                 e.stopPropagation()
